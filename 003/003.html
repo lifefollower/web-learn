@@ -1,0 +1,78 @@
+<!--
+ * @Description: 循环练习
+ * @Author: Lynn
+ * @Date: 2022-03-23 16:15:14
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-23 16:57:22
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        display: inline-block;
+        width: 110px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #333;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 最小公倍数
+      var min = 15;
+      var max = 30;
+      for (var i = max * min; i >= max; i -= max) {
+        if (i % min == 0) {
+          res = i;
+        }
+      }
+      console.log("最小公倍数是:", res);
+
+      //    输出9*9星号
+      for (var i = 1; i <= 9; i++) {
+        for (var j = 1; j <= 9; j++) {
+          document.write("* ");
+        }
+        document.write("<br>");
+      }
+
+      //    输出三角形
+      for (var j = 1; j <= 9; j++) {
+        for (var i = 1; i <= j; i++) {
+          document.write("* ");
+        }
+        document.write("<br>");
+      }
+
+      //    九九乘法表
+      for (var j = 1; j <= 9; j++) {
+        for (var i = 1; i <= j; i++) {
+          document.write("<span>" + i + " * " + j + " = " + i * j + "</span>");
+        }
+        document.write("<br>");
+      }
+
+      //    质数
+      var n = 113;
+      var count = 0;
+      for (var i = 2; i <= n / 2; i++) {
+        if (n % i === 0) {
+          count++;
+          break;
+        }
+      }
+      if (count === 0) {
+        console.log(n + "是质数");
+      } else {
+        console.log(n + "不是质数");
+      }
+    </script>
+  </body>
+</html>

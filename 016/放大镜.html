@@ -1,0 +1,119 @@
+<!--
+ * @Description: 放大镜
+ * @Author: Lynn
+ * @Date: 2022-04-01 15:06:55
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-04-01 19:24:06
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        height: 600px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        border: 5px solid #333;
+        margin: 0 auto;
+        position: relative;
+      }
+      .box > .show {
+        height: 450px;
+        width: 400px;
+        position: relative;
+      }
+      .box > .show > img {
+        width: 100%;
+        height: 100%;
+      }
+      .box > .show > .mask {
+        width: 150px;
+        height: 150px;
+        opacity: 0.5;
+        background-color: teal;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        display: none;
+        pointer-events: none;
+      }
+      .box > .list {
+        border-top: 5px solid #333;
+        flex: 1;
+        box-sizing: border-box;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .box > .list > img {
+        height: 120px;
+        width: 100%;
+      }
+      .box > .list > p {
+        border: 5px solid #333;
+        width: 40%;
+        height: 100%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+      }
+      .box > .list > p.active {
+        border-color: orangered;
+      }
+      .box > .enlarge {
+        width: 200px;
+        height: 200px;
+        border: 5px solid orangered;
+        position: absolute;
+        left: 120%;
+        top: 100px;
+        background-image: url(./img-max1.png);
+        background-size: 500px 500px;
+        background-repeat: none;
+        /* display: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="box">
+      <div class="show">
+        <img src="./img-max1.png" alt="" />
+        <div class="mask"></div>
+      </div>
+      <div class="list">
+        <p class="active">
+          <img
+            src="./img-min1.png"
+            data-show="./img-max1.png"
+            data-enlarge="./img-max1.png"
+            alt=""
+          />
+        </p>
+        <p>
+          <img
+            src="./img-min2.png"
+            data-show="./img-max2.png"
+            data-enlarge="./img-max2.png"
+            alt=""
+          />
+        </p>
+      </div>
+      <div class="enlarge"></div>
+    </div>
+    <script src="./enlarge.js"></script>
+    <script>
+      const e = new Enlarge("#box");
+      e.init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!--
+ * @Description: DOM/网页渲染
+ * @Author: Lynn
+ * @Date: 2022-03-25 17:09:42
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-25 18:18:18
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>网页渲染</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body{
+          background: black;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .footer,
+      .header {
+        height: 80px;
+        width: 1200px;
+        display: flex;
+        margin: 0 auto;
+        background: skyblue;
+        font-size: 40px;
+        color: white;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer {
+        height: 160px;
+        font-size: 100px;
+        margin-top: 20px;
+      }
+      .content {
+        width: 1200px;
+        padding: 10px 0;
+        margin: 0 auto;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      ul > li {
+        width: 280px;
+        margin-top: 20px;
+      }
+      li > p {
+        padding-left: 10px;
+        padding-top: 10px;
+        text-align: center;
+        color: wheat;
+      }
+      .content > ul > li > div {
+        height: 320px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">Colors</div>
+    <div class="content">
+      <ul>
+        <!-- 使用JS添加颜色块 -->
+      </ul>
+      <div class="footer"></div>
+    </div>
+    <script>
+      colors = [
+        { name: "turquoise", color: "turquoise" },
+        { name: "beige", color: "beige" },
+        { name: "brown", color: "brown" },
+        { name: "aqua", color: "aqua" },
+        { name: "salmon", color: "salmon" },
+        { name: "seagreen", color: "seagreen" },
+        { name: "lavender", color: "lavender" },
+        { name: "chocolate", color: "chocolate" },
+        { name: "khaki", color: "khaki" },
+        { name: "rebeccapurple", color: "rebeccapurple" },
+        { name: "indianred", color: "indianred" },
+        { name: "blanchedalmond", color: "blanchedalmond" },
+      ];
+      var ul = document.querySelector("ul");
+      var str = ``;
+      colors.forEach(function (item) {
+        str += `<li>
+                <div style="background: ${item.color};"></div>
+                <p>${item.name}</p>
+            </li>`;
+      });
+      ul.innerHTML = str;
+    </script>
+  </body>
+</html>

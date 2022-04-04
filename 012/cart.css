@@ -1,0 +1,143 @@
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      ol,
+      li {
+        list-style: none;
+      }
+      input,
+      button,
+      textarea {
+        outline: none;
+        border: none;
+      }
+      a,
+      a:hover,
+      a:target,
+      a:active {
+        text-decoration: none;
+        color: #333;
+      }
+      a,
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .header,
+      .footer {
+        width: 1200px;
+        height: 80px;
+        display: flex;
+        background-color: bisque;
+        color:white;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+      }
+      .footer {
+        height: 300px;
+        font-size: 100px;
+      }
+      .content {
+        width: 1200px;
+        padding: 10px 0;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .content .top,
+      .content .bottom {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        background-color: pink;
+      }
+      .content .top > input {
+        width: 20px;
+        height: 20px;
+        margin: 0 20px;
+      }
+      .content .bottom {
+        justify-content: space-around;
+      }
+      .content .bottom>p{
+          font-size: 20px;
+      }
+      .content .bottom > p > button {
+        font-size: 20px;
+        padding: 3px 10px;
+        cursor: pointer;
+        color: #fff   ;
+      }
+      .content .bottom > p > button.pay {
+        background-color: green;
+      }
+      .content .bottom > p > button.clear {
+        background-color: red;
+      }
+      .content .bottom > p > button.clear_select {
+        background-color: yellow;
+      }
+      .content .bottom > p > button.list {
+        background-color: blue;
+      }
+      .content .bottom>p>span{
+          color: red;
+      }
+      .content>.center{
+          width: 100%;
+      }
+      .content>.center>li{
+          height: 100px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: 2px solid black;
+          box-sizing: border-box;
+          margin: 10px 0;
+          border-radius: 10px;
+      }
+      .content>.center>li>div{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          font-size: 20px;
+      }
+      .content>.center>li>div>span{
+          color: red;
+      }
+      .content>.center>li>div:first-child>input{
+          width: 20px;
+          height: 20px;
+      }
+      .content>.center>li>div>button{
+          font-size: 20px;
+          padding: 5px 10px;
+          cursor: pointer;
+      }
+      .content>.center>li>div.del>button{
+          background-color: red;
+          color: #fff;
+      }
+      .content>.center>li>div.number>input{
+          width: 50px;
+          height: 24px;
+          text-align: center;
+          font-size: 20px;
+      }
+      .content>.center>li>div.number>button{
+          background-color: darkgrey;
+      }
+      .select,.pic,.del{
+          width: 100px;
+      }
+      .name,.price,.subtotal{
+          width: 200px;
+      }
+      .number{
+          width: 300px;
+      }

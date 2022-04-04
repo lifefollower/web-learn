@@ -1,0 +1,126 @@
+<!--
+ * @Description: 轮播图
+ * @Author: Lynn
+ * @Date: 2022-03-30 21:22:11
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-04-01 23:32:52
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ol,
+      ul,
+      li {
+        list-style: none;
+      }
+      .banner {
+        width: 600px;
+        height: 400px;
+        border: 1px solid #333;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 30px auto;
+        position: relative;
+      }
+      .banner > .imgBox {
+        width: 500%;
+        height: 100%;
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .banner > .imgBox > li {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+        color: #fff;
+        height: 100%;
+      }
+      .banner > .pointBox {
+        width: 200px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 5);
+        position: absolute;
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+        display: flex;
+        border-radius: 15px;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .banner > .pointBox > li {
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .banner > .pointBox > li.active {
+        background-color: red;
+      }
+      .banner > div {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 50%;
+        transform: translateY((-50%));
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        font-size: 24px;
+        display: none;
+      }
+      .banner:hover > div {
+        display: flex;
+      }
+      .banner > div.left {
+        left: 0;
+        border-radius: 0 20px 20px 0;
+      }
+      .banner > div.right {
+        right: 0;
+        border-radius: 20px 0 0 20px;
+      }
+      .banner > div:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <ul class="imgBox">
+        <li style="background-color: cadetblue">1</li>
+        <li style="background-color: skyblue">2</li>
+        <li style="background-color: orange">3</li>
+        <li style="background-color: tomato">4</li>
+        <li style="background-color: bisque">5</li>
+      </ul>
+      <ol class="pointBox">
+        <!--  <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li> -->
+      </ol>
+      <div class="left">&lt</div>
+      <div class="right">&gt</div>
+    </div>
+    <script src="./util.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

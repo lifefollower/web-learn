@@ -1,0 +1,104 @@
+<!--
+ * @Description: 贪吃蛇
+ * @Author: Lynn
+ * @Date: 2022-04-02 20:23:02
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-04-03 01:16:54
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>贪吃蛇</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .start,.reStart{
+          height: 20px;
+          width: 20px;
+          background-color: blue;
+      }   
+      .map {
+        width: 400px;
+        height: 500px;
+        border: 20px solid #333;
+        margin: 20px auto;
+        background-color: #fff;
+        position: relative;
+      }
+      .food,
+      .body,
+      .head {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+      }
+      .food {
+        background-color: gold;
+      }
+      .head {
+        background-color: red;
+      }
+      .body {
+        background-color: green;
+      }
+      .start{
+        width: 200px;
+        height: 80px;
+        background-color: #15c;
+        color: #fff;
+        font-size: 25px;
+        top: 50%;
+        left: 50%; 
+        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        position: absolute;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+      .start.active{
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="map" id="map"></div>
+    <div class="start active" id="start">开始游戏</div>
+    <script src="./util.js"></script>
+    <script src="./food.js"></script>
+    <script src="./snake.js"></script>
+    <script src="./game.js"></script>
+    <script>
+      const game = new Game("#map");
+      const startBtn = document.querySelector("#start");
+      const reStartBtn = document.querySelector("#reStart");
+      startBtn.onclick = function () {
+        game.start();
+        document.getElementById('start').style.display='none'
+      };
+      document.onkeydown = function (e) {
+        switch (e.keyCode) {
+          case 37:
+            game.changeDirect("left");
+            break;
+          case 38:
+            game.changeDirect("top");
+            break;
+          case 39:
+            game.changeDirect("right");
+            break;
+          case 40:
+            game.changeDirect("bottom");
+            break;
+        }
+      };
+    </script>
+  </body>
+</html>

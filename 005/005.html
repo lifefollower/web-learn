@@ -1,0 +1,61 @@
+<!--
+ * @Description: 倒计时/setInterval()
+ * @Author: Lynn
+ * @Date: 2022-03-24 16:41:43
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-24 17:34:50
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>倒计时</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      div {
+        text-align: center;
+        padding-top: 200px;
+        font-weight: 800;
+        font-size: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      距离国庆节还有
+      <span id="days">0</span>天 <span id="hours">0</span>小时
+      <span id="minutes">0</span>分 <span id="seconds">0</span>秒
+    </div>
+    <script>
+      var target = new Date(2022, 10, 1, 0, 0, 0);
+      // var target=new Date(2022,3,24,17,30,0)
+      setInterval(function () {
+        var current = new Date();
+        var diff = diffTime(current, target).split(",");
+        // console.log(diff)
+        days.innerText = diff[0];
+        hours.innerText = diff[1];
+        minutes.innerText = diff[2];
+        seconds.innerText = diff[3];
+      }, 1000);
+      function diffTime(curr, tar) {
+        var diffMs = Math.ceil((tar.getTime() - curr.getTime()) / 1000);
+        var days = Math.floor(diffMs / (60 * 60 * 24) - 30);
+        var hours = Math.floor((diffMs % (60 * 60 * 24)) / (60 * 60));
+        var minutes = Math.floor((diffMs % (60 * 60)) / 60);
+        var seconds = diffMs % 60;
+        return days + "," + hours + "," + minutes + "," + seconds;
+      }
+    </script>
+  </body>
+</html>

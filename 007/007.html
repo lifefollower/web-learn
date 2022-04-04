@@ -1,0 +1,54 @@
+<!--
+ * @Description: DOM/动态渲染表格
+ * @Author: Lynn
+ * @Date: 2022-03-25 16:40:05
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-25 18:02:41
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 500px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1" cellspacing="0">
+      <thead>
+        <tr>
+          <th>学号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <tbody>
+          <!-- 使用JS添加 -->
+      </tbody>
+    </table>
+    <script>
+      var userList = [
+        { id: 1, name: "Jack", age: 18, gender: "男" },
+        { id: 2, name: "Rpse", age: 20, gender: "女" },
+        { id: 3, name: "Tom", age: 22, gender: "男" },
+      ];
+      var tbody = document.querySelector("tbody");
+      userList.forEach(function (item) {
+        var tr = document.createElement("tr");
+        for (var key in item) {
+          var td = document.createElement("td");
+          td.innerText = item[key];
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>

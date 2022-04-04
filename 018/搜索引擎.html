@@ -1,0 +1,117 @@
+<!--
+ * @Description: 实现搜索引擎功能
+ * @Author: Lynn
+ * @Date: 2022-04-04 17:59:20
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-04-04 21:08:39
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 550px;
+            height: 50px;
+            position:  relative;
+            display: flex;
+            margin: 50px auto;
+        }
+        input,button{
+            outline: none;
+            border: none;
+        }
+        .box>input{
+            width: 400px;
+            border-radius: 10px 0 0 10px;
+            border: 2px solid #c4c7ce;
+            padding:12px 16px;
+            font-size: 16px;
+            border-right: none;
+        }
+        .box>button{
+            flex:1;
+            background-color: #4e6ef2;
+            font-size: 20px;
+            color: #fff;
+            border: none;
+            border-radius: 0 10px 10px 0;
+            padding: 0;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        .box>ul{
+            position: absolute;
+            width: 436px;
+            box-sizing: border-box;
+            border: 2px solid #4e6ef2;
+            border-radius: 0 0 10px 10px;
+            border-top: none;
+            top: 100%;
+            left: 0;
+            overflow: hidden;
+            display: none;
+        }
+        .box>ul>li{
+            list-style: none;
+            height: 30px;
+            padding-left: 20px;
+            line-height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .box>ul>li:hover{
+            background-color: #ccc;
+            color: blue;
+        }
+        .box>input.active{
+            border: 2px solid #4e6ef2;
+            border-right: none;
+            border-radius: 10px 0 0 0;
+        }
+        .box>ul.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text">
+        <button>搜索一下</button>
+        <ul>
+        </ul>
+    </div>
+    <script>
+        const inp=document.querySelector('input')
+        const ul=document.querySelector('ul')
+        inp.oninput=function(){
+            const text=this.value.trim()
+            const script=document.createElement('script')
+            script.src=`https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=36068,31254,36165,34584,36140,36120,36192,36074,36125,36235,26350,36115,36101,36061&wd=${text}&req=2&bs=qq&pbs=qq&csor=2&pwd=qq&cb=fn`
+            document.body.appendChild(script)
+            script.remove()
+        }
+        function fn(res) {
+            if(!res.g){
+                ul.classList.remove('active')
+                inp.classList.remove('active')
+                return
+            }
+            let str=``
+            res.g.forEach(item => {
+                str+=`<li>${item.q}</li>`
+            });
+            ul.innerHTML=str
+            inp.classList.add('active')
+            ul.classList.add('active')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!--
+ * @Description: 正则表达式
+ * @Author: Lynn
+ * @Date: 2022-03-28 19:43:27
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-28 22:08:15
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        width: 300px;
+        height: 100px;
+        border: 10px solid skyblue;
+        margin: 20px auto;
+        padding: 20px;
+      }
+      input {
+        width: 100%;
+        height: 50px;
+        font-size: 24px;
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+      p {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      p > span {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: gray;
+        color: white;
+        font-size: 24px;
+      }
+      p > span:nth-child(1).active {
+        background-color: red;
+      }
+      p > span:nth-child(2).active {
+        background-color: yellow;
+      }
+      p > span:nth-child(3).active {
+        background-color: green;
+      }
+      form {
+        width: 300px;
+        height: 300px;
+        border: 10px solid pink;
+        padding: 20px;
+        margin: 10px auto;
+      }
+      label {
+        display: block;
+        height: 80px;
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .login {
+        height: 50px;
+        width: 200px;
+        font-size: 20px;
+        /* margin-left:50px;; */
+        margin: 20px 50px;
+        text-align: center;
+      }
+      label > span {
+        position: absolute;
+        top: 70px;
+        left: 50px;
+        font-size: 20px;
+        color: red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="text" />
+      <p>
+        <span class="active">弱</span>
+        <span>中</span>
+        <span>强</span>
+      </p>
+    </div>
+    <form>
+      <label>
+        用户名:<input class="username" type="text" />
+        <span>请按照规则填写用户名</span>
+      </label>
+      <label>
+        密码:<input class="password" type="text" />
+        <span>请按照规则填写密码</span>
+      </label>
+      <input class="login" type="button" value="登录" />
+    </form>
+    <script>
+      /* 验证身份证号码 */
+      var reg_identify = /^\d{17}(\d|x)$/;
+      console.log(reg_identify.test("110108200302230011"));
+
+      /* 验证手机号码 */
+      var reg_phone = /^(\+86)?(133|135|138)\d{8}$/;
+      console.log(reg_phone.test("+8613301295501"));
+
+      /* 验证邮箱 */
+      var reg_email = /^\w{6,16}@(qq|163|sina|gmail)\.(com|cn)$/;
+      console.log(reg_email.test("21334fdfd@gmail.com"));
+
+      /* 验证用户名 */
+      var reg_username = /^[0-9a-zA-Z]\w{5,11}$/;
+      console.log(reg_username.test("abcdef"));
+
+      /* 密码校验 */
+      var inp = document.querySelector("input");
+      var spans = document.querySelectorAll("span");
+      var r1 = /\d/;
+      var r2 = /[a-z]/i;
+      var r3 = /[@#%&]/;
+      inp.oninput = function () {
+        var text = inp.value;
+        var level = 0;
+        if (r1.test(text)) level++;
+        if (r2.test(text)) level++;
+        if (r3.test(text)) level++;
+
+        for (var i = 0; i < spans.length; i++) {
+          spans[i].classList.remove("active");
+          if (i < level) spans[i].classList.add("active");
+        }
+      };
+
+      /* 表单验证 */
+      var regObj = {
+        username: /^[0-9a-z]\w{5,11}$/i,
+        password: /^\w{6,12}$/,
+      };
+      var inps = document.querySelectorAll("form input");
+      inps.forEach(function (item) {
+        item.oninput = function () {
+          var text = item.value;
+          var reg = regObj[item.className];
+          var span = item.nextElementSibling;
+          span.style.display = reg.test(text) ? "none" : "block";
+        };
+      });
+    </script>
+  </body>
+</html>

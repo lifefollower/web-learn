@@ -1,0 +1,29 @@
+<!--
+ * @Description: 函数练习
+ * @Author: Lynn
+ * @Date: 2022-03-24 15:23:08
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-24 15:33:02
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(str){
+            var a=(parseInt(str/1000)+5)%7
+            var b=(parseInt(str%1000/100)+5)%7
+            var c =(parseInt(str%100/10)+5)%7
+            var d=(str%10+5)%7
+            var res=''+c+d+a+b
+            return res
+        }
+        console.log(fn('0258'))
+    </script>
+</body>
+</html>

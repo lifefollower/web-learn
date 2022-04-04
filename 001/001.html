@@ -1,0 +1,48 @@
+<!--
+ * @Description: 运算练习
+ * @Author: Lynn
+ * @Date: 2022-03-21 23:24:48
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-23 15:34:21
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.保留三位小数
+        var n1 = 100.23456789
+        var r1 = parseInt(n1 * 1000) / 1000
+        console.log(r1)
+
+        // 2.拆分一个四位数字
+        var n2 = 3976
+            // console.log(n2.toString().length)
+        for (var i = n2.toString().length; i > 0; i--) {
+            console.log(parseInt((n2 % 10 ** i) / (10 ** (i - 1))))
+                // console.log(i)
+        }
+
+        // 3.换算
+        var num = 1234567
+        var day = parseInt(num / (60 * 60 * 24))
+            // console.log(day)
+        var hours = parseInt(num % (60 * 60 * 24) / (60 * 60))
+            // console.log(hours)
+        var minutes = parseInt(num % (60 * 60) / 60)
+            // console.log(minutes)
+        var seconds = parseInt(num % 60)
+            // console.log(seconds)
+        var res = num + 's is ' + day + 'days ' + hours + 'hours ' + minutes + 'minutes ' + seconds + 'seconds '
+        console.log(res)
+    </script>
+</body>
+
+</html>

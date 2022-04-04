@@ -1,0 +1,142 @@
+<!--
+ * @Description: 实时显示坐标点/鼠标跟随/拖拽
+ * @Author: Lynn
+ * @Date: 2022-03-26 21:40:43
+ * @LastEditors: Lynn
+ * @LastEditTime: 2022-03-27 00:08:01
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      ul {
+        margin: 100px;
+      }
+      li {
+        width: 200px;
+        height: 100px;
+        position: relative;
+        border: 1px solid #333;
+        font-size: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 100px;
+        background-color: aliceblue;
+      }
+      li > p {
+        width: 500px;
+        height: 60px;
+        background: pink;
+        position: absolute;
+        left: 800px;
+        display: none;
+        background-color: bisque;
+        text-align: center;
+        line-height: 60px;
+        z-index: 999;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background: sandybrown;
+        position: absolute;
+        left: 500px;
+        top: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">
+      X轴坐标位置是:<span class="x">0</span><br />
+      Y轴坐标位置是:<span class="y">0</span>
+    </h1>
+    <ul>
+      <li>
+        ONE
+        <p>I am ONE's document.</p>
+      </li>
+      <li>
+        TWO
+        <p>I am TWO's document.</p>
+      </li>
+      <li>
+        THREE
+        <p>I am THREE's document.</p>
+      </li>
+    </ul>
+    <div class="box"></div>
+    <script>
+      var xBOx = document.querySelector(".x");
+      var yBox = document.querySelector(".y");
+
+      /* 鼠标跟随 */
+      var lis = document.querySelectorAll("ul>li");
+      lis.forEach(function (item) {
+        item.onmouseover = overHandler;
+        item.onmouseout = outHandler;
+        item.onmousemove = moveHandler;
+      });
+      function overHandler() {
+        this.firstElementChild.style.display = "block";
+      }
+      function outHandler() {
+        this.firstElementChild.style.display = "none";
+      }
+      function moveHandler(e) {
+        e = e || window.event;
+        var x = e.offsetX + 5;
+        var y = e.offsetY + 5;
+        this.firstElementChild.style.left = x + "px";
+        this.firstElementChild.style.top = y + "px";
+      }
+
+      /* 鼠标拖拽 */
+      var div = document.querySelector(".box");
+      var flag = false;
+      div.onmousedown = function () {
+        flag = true;
+      };
+      div.onmouseup = function () {
+        flag = false;
+      };
+      document.onmousemove = function (e) {
+        /* 鼠标坐标 */
+        console.log("光标移动");
+        e = e || window.event;
+        var x = e.pageX;
+        var y = e.pageY;
+        xBOx.innerText = x;
+        yBox.innerText = y;
+        console.log(x, y);
+
+        if (flag === false) return;
+        e = e || window.event;
+        var x = e.clientX - 100;
+        var y = e.clientY - 100;
+        if (x <= 50) x = 0;
+        if (y <= 50) y = 0;
+        if (x >= document.documentElement.clientWidth - div.offsetWidth - 50)
+          x = document.documentElement.clientWidth - div.offsetWidth;
+        if (
+          y >=
+          document.documentElement.clientHeight - div.offsetHeight - 50 /*  */
+        )
+          y = document.documentElement.clientHeight - div.offsetHeight;
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+      };
+    </script>
+  </body>
+</html>
